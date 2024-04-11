@@ -15,3 +15,9 @@ step 7 :- configure the ssr/index.js (code will be there)
 step 8 :- change the type:"module" to type:"common.js" in package.json file
 
 step 9 :- now run npx nodemon index.js in ssr folder (need nodemon to be already installed)
+
+--------------------------------------------------(in second commit)
+-> const router = express.Router() :- for remove app.use to router.use for this  router.use(express.static(path.resolve(__dirname, "..", "dist")));
+->after that need to do this app.use(router);
+
+-> user router.get instead of app.use for home page and about page routes becuase when we user app.use or router.use it will renders the about page on screen on /about but the source code will be of home page
