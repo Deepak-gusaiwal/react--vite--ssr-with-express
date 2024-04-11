@@ -50,6 +50,24 @@ router.get("/about", (req, res) => {
     res.send(data.replace(`<div id="root"></div>`,`<div id="root">${html}</div>`));
   });
 });
+// ---3 User Page
+router.get("/:name", (req, res) => {
+  fs.readFile(path.resolve("./dist/index.html"), "utf-8", (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500), send("some Error Occured");
+    }
+    const html = ReactDomServer.renderToString(
+      <StaticRouter location={req.url}>
+        <Provider store={store}>
+        <App />
+        </Provider>
+      </StaticRouter>
+    );
+    console.log(data);
+    res.send(data.replace(`<div id="root"></div>`,`<div id="root">${html}</div>`));
+  });
+});
 
 router.use(express.static(path.resolve(__dirname, "..", "dist")));
 app.use(router)

@@ -1,16 +1,18 @@
 import React from 'react'
+import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-const About = () => {
+const User = () => {
+    const {name} = useParams();
   return (
     <>
-      <Helmet>
+    <Helmet>
         <meta charSet="utf-8" />
-        <title>About Page</title>
+        <title>User Page</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <h1>About Page</h1>
+      <h1>{name}</h1>
     </>
   )
 }
 
-export default About
+export default User
